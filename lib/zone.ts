@@ -866,6 +866,7 @@ const Zone: ZoneType = (function(global: any) {
     scheduleMacroTask(
         source: string, callback: Function, data: TaskData, customSchedule: (task: Task) => void,
         customCancel: (task: Task) => void): MacroTask {
+          console.log("NEW TASK SCHEDULED : ",source, data);
       return this.scheduleTask(
           new ZoneTask(macroTask, source, callback, data, customSchedule, customCancel));
     }
@@ -898,6 +899,7 @@ const Zone: ZoneType = (function(global: any) {
     }
 
     private _updateTaskCount(task: ZoneTask<any>, count: number) {
+      console.log("_updateTaskCount TASK : ", task);
       const zoneDelegates = task._zoneDelegates;
       if (count == -1) {
         task._zoneDelegates = null;
